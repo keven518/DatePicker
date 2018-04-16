@@ -15,7 +15,10 @@
    var firstDay = new Date(year, month - 1, 1);
    // 第一天星期几
    var firstDayWeekDay = firstDay.getDay();
-   if(!firstDayWeekDay) firstDayWeekDay = 7;
+   if(!firstDayWeekDay === 0 ) firstDayWeekDay = 7;
+
+   year = firstDay.getFullYear();
+   month = firstDay.getMonth() + 1;
 
    var lastDayOfLastMonth = new Date(year, month - 1, 0)
    var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
@@ -49,7 +52,11 @@
      })
    }
 
-   return ret;
+   return {
+     year: year,
+     month: month,
+     days: ret
+   };
  }
 
  window.datepicker = datepicker;
